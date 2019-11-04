@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function playGame(playerInput) {
     clearMessages();
 
@@ -68,8 +71,10 @@ function playGame(playerInput) {
 
         if (argComputerMove == 'kamień' && argPlayerMove == 'papier' || argComputerMove == 'papier' && argPlayerMove == 'nożyce' || argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
             printMessage('Ty wygrywasz!');
+            document.getElementById('player-wins').innerHTML = ++playerScore;
         } else if (argComputerMove == 'papier' && argPlayerMove == 'kamień' || argComputerMove == 'nożyce' && argPlayerMove == 'papier' || argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
             printMessage('Ja wygrywam!');
+            document.getElementById('computer-wins').innerHTML = ++computerScore;
         } else if (argComputerMove == 'kamień' && argPlayerMove == 'kamień' || argComputerMove == 'papier' && argPlayerMove == 'papier' || argComputerMove == 'nożyce' && argPlayerMove == 'nożyce') {
             printMessage('Remis!');
         } else {
@@ -80,29 +85,26 @@ function playGame(playerInput) {
     displayResult(computerMove, playerMove);
 }
 
-let playerScore = 0;
-let computerScore = 0;
+// function result() {
 
-function result() {
-
-    if (document.querySelector('#messages div:nth-of-type(4)').innerHTML == 'Ty wygrywasz!') {
-        document.getElementById('player-wins').innerHTML = ++playerScore;
-    } else if (document.querySelector('#messages div:nth-of-type(4)').innerHTML == 'Ja wygrywam!') {
-        document.getElementById('computer-wins').innerHTML = ++computerScore;
-    }
-}
+//     if (document.querySelector('#messages div:nth-of-type(4)').innerHTML == 'Ty wygrywasz!') {
+//         document.getElementById('player-wins').innerHTML = ++playerScore;
+//     } else if (document.querySelector('#messages div:nth-of-type(4)').innerHTML == 'Ja wygrywam!') {
+//         document.getElementById('computer-wins').innerHTML = ++computerScore;
+//     }
+// }
 
 document.getElementById('play-rock').addEventListener('click', function () {
     playGame(1);
-    result();
+    // result();
 });
 document.getElementById('play-paper').addEventListener('click', function () {
     playGame(2);
-    result();
+    // result();
 });
 document.getElementById('play-scissors').addEventListener('click', function () {
     playGame(3);
-    result();
+    // result();
 });
 
 /*for (let i = 0; i < 100; i++) {
